@@ -6,33 +6,40 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import com.example.tetris.storage.AppPreferences
+import com.google.android.material.snackbar.Snackbar
 import kotlin.system.exitProcess
 
 class MainActivity : AppCompatActivity() {
-    var tvHighScore: TextView? = null
+	var tvHighScore: TextView? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        supportActionBar?.hide()
+	override fun onCreate(savedInstanceState: Bundle?) {
+		super.onCreate(savedInstanceState)
+		setContentView(R.layout.activity_main)
+		supportActionBar?.hide()
 
-        val btnNewGame = findViewById<Button>(R.id.btn_new_game)
-        val btnResetScore = findViewById<Button>(R.id.btn_reset_score)
-        val btnExit = findViewById<Button>(R.id.btn_exit)
-        tvHighScore = findViewById(R.id.tv_high_score)
+		val btnNewGame = findViewById<Button>(R.id.btn_new_game)
+		val btnResetScore = findViewById<Button>(R.id.btn_reset_score)
+		val btnExit = findViewById<Button>(R.id.btn_exit)
+		tvHighScore = findViewById(R.id.tv_high_score)
 
-        btnNewGame.setOnClickListener(this::onBtnNewGameClick)
-        btnResetScore.setOnClickListener(this::onBtnResetScore)
-        btnExit.setOnClickListener(this::onBtnExitClick)
-    }
+		btnNewGame.setOnClickListener(this::onBtnNewGameClick)
+		btnResetScore.setOnClickListener(this::onBtnResetScore)
+		btnExit.setOnClickListener(this::onBtnExitClick)
+	}
 
-    private fun onBtnNewGameClick(view: View) {
-        startActivity(Intent(this, GameActivity::class.java))
-    }
+	private fun onBtnNewGameClick(view: View) {
+		startActivity(Intent(this, GameActivity::class.java))
+	}
 
-    private fun onBtnResetScore(view: View) {}
+	private fun onBtnResetScore(view: View) {
+		AppPreferences(this).clearHighScore()
+		Snackbar
+			.make(view, "Score successfully reset", Snackbar.LENGTH_SHORT)
+			.show()
+	}
 
-    private fun onBtnExitClick(view: View) {
-        exitProcess(0)
-    }
+	private fun onBtnExitClick(view: View) {
+		exitProcess(0)
+	}
 }
