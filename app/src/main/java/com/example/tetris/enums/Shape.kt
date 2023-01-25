@@ -1,9 +1,8 @@
-package com.example.tetris.models
+package com.example.tetris.enums
 
-enum class Shape(
-	val frameCount: Int,
-	val startPosition: Int
-) {
+import com.example.tetris.models.Frame
+
+enum class Shape(val frameCount: Int, val startPosition: Int) {
 	Tetromino1(1, 1) {
 		override fun getFrame(frameNumber: Int): Frame {
 			return Frame(2)
