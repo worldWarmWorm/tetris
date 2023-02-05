@@ -23,4 +23,12 @@ enum class BlockColor(private val rgbValue: Int, private val byteValue: Byte) {
 		Color.rgb(0, 255, 255),
 		6
 	);
+
+	fun getRgbValue(): Int {
+		return this.rgbValue
+	}
+
+	fun getByteValue(): Byte {
+		return this.byteValue
+	}
 }
