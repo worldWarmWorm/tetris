@@ -5,7 +5,6 @@ import androidx.annotation.NonNull;
 import com.example.tetris.enums.BlockColor;
 import com.example.tetris.enums.FieldConstants;
 import com.example.tetris.enums.Shape;
-
 import java.util.Random;
 
 public class Block {
