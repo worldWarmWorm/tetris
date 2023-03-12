@@ -83,7 +83,7 @@ class TetrisView : View {
 				return
 			}
 
-			setGameCommand(move)
+			setGameCommandWithDelay(move)
 		}
 	}
 
@@ -100,7 +100,7 @@ class TetrisView : View {
 		viewHandler.sleep(DELAY.toLong())
 	}
 
-	fun updateScores() {
+	private fun updateScores() {
 		activity?.tvCurrentScore?.text = "${model?.score}"
 		activity?.tvHighScore?.text = "${activity?.appPreferences?.getHighScore()}"
 	}
