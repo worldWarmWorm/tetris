@@ -18,7 +18,6 @@ import com.example.tetris.enums.Statuses
 import com.example.tetris.models.AppModel
 import com.example.tetris.models.Block
 
-
 class TetrisView : View {
 	private val paint = Paint()
 	private var lastMove: Long = 0
