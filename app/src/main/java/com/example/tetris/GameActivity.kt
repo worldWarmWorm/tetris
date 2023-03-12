@@ -19,7 +19,6 @@ class GameActivity : AppCompatActivity() {
 	private val appModel: AppModel = AppModel()
 	private lateinit var tetrisView: TetrisView
 
-	@SuppressLint("ClickableViewAccessibility")
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.activity_game)
@@ -44,7 +43,7 @@ class GameActivity : AppCompatActivity() {
 	}
 
 	private fun onTetrisViewTouch(view: View, event: MotionEvent): Boolean {
-		if (appModel.isGameActive() || appModel.isGameAwaitingStart()) {
+		if (appModel.isGameOver() || appModel.isGameAwaitingStart()) {
 			appModel.startGame()
 			tetrisView.setGameCommandWithDelay(Motions.DOWN)
 		} else if (appModel.isGameActive()) {
